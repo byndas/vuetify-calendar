@@ -6,44 +6,35 @@
           :src="require('../assets/logo.svg')"
           class="my-3"
           contain
-          height="150"
+          height="110"
         />
       </v-col>
     </v-row>
 
-    <v-row justify="center">
-      <v-date-picker
-        v-model="date"
-        :allowed-dates="allowedDates"
-        class="mt-4"
-        min="2016-06-15"
-        max="2018-03-20"
-      ></v-date-picker>
+    <v-row justify="center" class="mb-7">
+      <date-picker />
     </v-row>
+
     <v-row justify="center">
-      <v-btn
-        elevation="5"
-        large
-      >Reset</v-btn>
-      <v-btn
-        depressed
-        color="primary"
-        large
-      >Save</v-btn>
+      <picker-buttons />
     </v-row>
+
+    <alert-modal /> <!-- with vue 3 can be teleported outside -->
   </v-container>
 </template>
 
 <script>
+  import DatePicker from './DatePicker.vue'
+  import PickerButtons from './PickerButtons.vue'
+  import AlertModal from './AlertModal.vue'
+
   export default {
     name: 'MainContainer',
 
-    data: () => ({
-      date: '2018-03-02',
-    }),
-
-    methods: {
-      allowedDates: val => parseInt(val.split('-')[2], 10) % 2 === 0,
+    components: {
+      DatePicker,
+      PickerButtons,
+      AlertModal
     },
   }
 </script>
