@@ -1,5 +1,5 @@
 <template>
-   <div class="text-center">
+  <div class="text-center">
     <v-dialog v-model="show" width="300">
       <v-alert v-if="type === 'success'" type="success" class="mb-0">
         <h4>Success</h4>
@@ -16,22 +16,25 @@
 
 <script>
 export default {
-  name: 'AlertModal',
+  name: "AlertModal",
   computed: {
-    dialog () {
-      return this.$store.state.demoModule.dialog
+    dialog() {
+      return this.$store.state.demoModule.dialog;
     },
     type() {
-      return this.dialog.type
+      return this.dialog.type;
     },
     show: {
-      get () {
-        return this.dialog.show
+      get() {
+        return this.dialog.show;
       },
-      set (value) {
-        this.$store.dispatch('demoModule/TOGGLE_MODAL', { show: value, type: this.type })
+      set(value) {
+        this.$store.dispatch("demoModule/TOGGLE_MODAL", {
+          show: value,
+          type: this.type
+        });
       }
     }
   }
-}
+};
 </script>
